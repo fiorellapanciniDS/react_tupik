@@ -1,11 +1,25 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+
+/*fondo y fuente de toda la pagina*/
+header{
+  background-color: #353535;
+  font-family: "nunito";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a{
+  color: #fff!important;
 }
+
+.App {
+  text-align: left;
+}
+
+.navbar-expand-lg .navbar-collapse {
+	justify-content: flex-end;
+  margin-left: 25px;
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,7 +27,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,7 +36,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
