@@ -1,10 +1,12 @@
 import CartWidget from './CartWidget';
-import logo from './logoTupik.png'
+import logo from './logoTupik.png';
+import {Stack} from "react-bootstrap";
 
 const Navbar = () => {
     return (
         <div className="App">
             <header>
+            <Stack direction="horizontal" gap={3}>
                 <img src ={logo} width="250" height="auto"/>
                 <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">
@@ -28,6 +30,7 @@ const Navbar = () => {
                     </div>
                 </nav>
                 <CartWidget />
+                </Stack>
             </header>
         </div>
     );
