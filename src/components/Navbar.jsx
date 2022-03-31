@@ -1,3 +1,4 @@
+import CartWidget from './CartWidget';
 import logo from './logoTupik.png'
 
 const Navbar = () => {
@@ -26,6 +27,7 @@ const Navbar = () => {
                     </div>
                     </div>
                 </nav>
+                <CartWidget />
             </header>
         </div>
     );
