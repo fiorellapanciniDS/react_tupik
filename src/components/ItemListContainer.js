@@ -1,6 +1,36 @@
-import ItemCount from "./ItemCount";
+import * as React from 'react';
+import ItemCount from './ItemCount';
+import ItemList from './ItemList';
+import { Wrapper } from './styledComponents';
+import customFetch from '../utils/customFetch';
+import { useEffect, useState } from 'react';
+const { products } = require('../utils/products');
 
-const ItemListContainer = (props) => {
+const ItemListContainer = ({greeting}) => {
+    const [products, setDatos] = useState([]);
+
+    useEffect(() => {
+        customFetch(2000, products)
+            .then(result => setDatos(result))
+            .catch(err => console.log(err))
+    }, []);
+
+    const onAdd = (qty) => {
+        alert("You have selected " + qty + " items.");
+    }
+
+    return (
+        <>  
+            <Wrapper>{greeting}</Wrapper>
+            <ItemList items={products} />
+            <ItemCount stock={10} initial={1} onAdd={onAdd} />
+        </>
+    );
+}
+    export default ItemListContainer;
+
+/* 
+
 
     const onAdd = (qty) => {
         alert("Has seleccionado " + qty + " imagenes.");
@@ -13,6 +43,4 @@ const ItemListContainer = (props) => {
         </>
         );
     
-    }
-    
-    export default ItemListContainer;
+    } */
