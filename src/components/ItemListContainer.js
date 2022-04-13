@@ -15,7 +15,7 @@ const ItemListContainer = () => {
     }, [datos]);
 
     const onAdd = (qty) => {
-        alert("You have selected " + qty + " imagenes.");
+        alert("Seleccionaste " + qty + " imagenes.");
     }
 
     return (
