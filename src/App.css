@@ -47,6 +47,32 @@ a{
   justify-content: flex-end;
 }
 
+
+.detailContainer {
+  margin-top: 25px;
+  padding: 25px;
+}
+
+
+.itemImg{
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.itemTitle{
+  color: #575757;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 20px;
+}
+
+.itemPrice{
+  color: #d69c93;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
