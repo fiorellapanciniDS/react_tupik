@@ -1,11 +1,11 @@
 let is_ok = true;
 
-const {data} = require('./products.js');
+const {products} = require('./products.js');
 
 const customFetch = () => {
     return new Promise((resolve, reject) => {
         if (is_ok) {
-            resolve(data);
+            resolve(products);
         } else {
             reject('KO');
         }

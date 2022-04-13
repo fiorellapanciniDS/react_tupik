@@ -1,4 +1,4 @@
-const data = [
+const products = [
     {
         id: 1,
         name: "Laguna Maipo",
@@ -41,5 +41,5 @@ const data = [
   ];
   
     module.exports = {
-      data,
+      products,
     }
