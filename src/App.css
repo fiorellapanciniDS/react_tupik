@@ -19,6 +19,10 @@ a{
   margin-left: 25px;
 }
 
+.nav-item {
+  padding: 20px;
+}
+
 
 
 @media (prefers-reduced-motion: no-preference) {

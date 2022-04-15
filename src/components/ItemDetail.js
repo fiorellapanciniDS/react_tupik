@@ -10,7 +10,7 @@ const ItemDetail = ({item}) => {
     return (
         <>
         {
-            item.image
+            item && item.image
             ?
             <div className="row detailContainer">
                 <div className="col-lg-5 col-md-5 col-xs-12 detailImg">

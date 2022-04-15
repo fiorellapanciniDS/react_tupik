@@ -1,13 +1,14 @@
 import CartWidget from './CartWidget';
 import logo from './logoTupik.png';
 import {Stack} from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
         <div className="App">
             <header>
             <Stack direction="horizontal" gap={3}>
-                <img src ={logo} width="250" height="auto"/>
+            <Link to='/'><img src ={logo} width="250" height="auto"/></Link>
                 <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">
                     <a className="navbar-brand"></a>
@@ -17,13 +18,13 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Imagenes</a>
+                            <Link to='/category/1' style={{textDecoration: "none", color: "white"}}>Paisajes</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Vectores</a>
+                            <Link to='/category/2' style={{textDecoration: "none", color: "white"}}>Playas</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Ilustraciones</a>
+                            <Link to='/category/3' style={{textDecoration: "none", color: "white"}}>Noche</Link>
                         </li>
                         </ul>
                     </div>
