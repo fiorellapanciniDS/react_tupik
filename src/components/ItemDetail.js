@@ -1,11 +1,16 @@
+import { Button } from '@mui/material';
 import ItemCount from "./ItemCount";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
-const ItemDetail = ({item}) => {
+const ItemDetail = ({ item }) => {
+    const [itemCount, setItemCount] = useState(0);
 
     const onAdd = (qty) => {
         alert("Seleccionaste " + qty + "imagenes" );
-    };
+        setItemCount(qty);
+    }
 
     return (
         <>
@@ -21,8 +26,14 @@ const ItemDetail = ({item}) => {
                     <p className= "itemDetail">Categoria: {item.category}</p>
                     <p className= "itemPrice"> Precio $ {item.cost}</p>
                     <p className= "itemPrice">Quedan {item.stock} imagenes</p>
-                    <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
-                </div>    
+                </div> 
+                <div className="col-lg-7 col-md-7 col-xs-12 detailImg">   
+                    {
+                        itemCount === 0
+                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
+                        : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained">Comprar</Button></Link>
+                    }
+                </div>
             </div>
             : <p>Cargando imagenes...</p>
         }
