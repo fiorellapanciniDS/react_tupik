@@ -1,4 +1,3 @@
-import ItemCount from './ItemCount';
 import ItemList from './ItemList';
 import customFetch from "../utils/customFetch";
 import { useEffect, useState } from 'react';
@@ -9,16 +8,18 @@ const ItemListContainer = () => {
     const [datos, setDatos] = useState([]);
     const { idCategory } = useParams();
 
-    console.log(idCategory);
-
     useEffect(() => {
-        customFetch(2000, products.filter(item => {
-            if (idCategory === undefined) return item;
-            return item.categoryId === parseInt(idCategory)
-        }))
+        if (idCategory == undefined) {
+        customFetch(2000, products)
             .then(result => setDatos(result))
             .catch(err => console.log(err))
-    }, [datos]);
+        } else {
+            customFetch(2000, products.filter(item => item.categoryId === parseInt(idCategory)))
+            .then(result => console.log(result))
+            .catch(err => console.log(err))
+        }
+        console.log(idCategory);
+    }, []);
 
     const onAdd = (qty) => {
         alert("Seleccionaste " + qty + " imagenes.");
@@ -27,7 +28,6 @@ const ItemListContainer = () => {
     return (
         <>  
             <ItemList items={datos} />
-            <ItemCount stock={5} initial={1} onAdd={onAdd} />
         </>
     );
 }

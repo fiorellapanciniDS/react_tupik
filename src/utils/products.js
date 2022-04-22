@@ -5,7 +5,7 @@ const products = [
         stock: 10,
         cost: 150,
         category: "Paisajes",
-        categoryId: "1",
+        categoryId: 1,
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor libero, tincidunt id lacinia auctor, mattis elementum tortor. In eu bibendum magna, ac dignissim justo.",
         size: '376 x 249',
         image: [
@@ -18,7 +18,7 @@ const products = [
           stock: 10,
           cost: 130,
           category: "Playas",
-          categoryId: "2",
+          categoryId: 2,
           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor libero, tincidunt id lacinia auctor, mattis elementum tortor. In eu bibendum magna, ac dignissim justo.",
           size: '376 x 249',
           image: [
@@ -31,7 +31,7 @@ const products = [
           stock: 10,
           cost: 170,
           category: "Noche",
-          categoryId: "2",
+          categoryId: 3,
           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor libero, tincidunt id lacinia auctor, mattis elementum tortor. In eu bibendum magna, ac dignissim justo.",
           size: '376 x 249',
           image: [
@@ -41,5 +41,5 @@ const products = [
   ];
   
     module.exports = {
-      products,
+      products, 
     }

@@ -1,6 +1,6 @@
 import Items from "./Items";
 
-const ItemList = ({items})=>{
+const ItemList = ({ items })=>{
     return (
         <>
         {
