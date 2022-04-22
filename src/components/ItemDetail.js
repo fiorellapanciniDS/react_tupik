@@ -30,7 +30,7 @@ const ItemDetail = ({ item }) => {
                 <div className="col-lg-7 col-md-7 col-xs-12 detailImg">   
                     <>
                     <ItemCount stock={item.stock} initial={0} onAdd={onAdd} />
-                    <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained">Comprar</Button></Link>
+                    <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Comprar</Button></Link>
                     </>
                 </div>
             </div>

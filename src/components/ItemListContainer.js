@@ -8,6 +8,8 @@ const ItemListContainer = () => {
     const [datos, setDatos] = useState([]);
     const { idCategory } = useParams();
 
+    console.log(idCategory);
+
     useEffect(() => {
         if (idCategory == undefined) {
         customFetch(2000, products)
@@ -15,10 +17,10 @@ const ItemListContainer = () => {
             .catch(err => console.log(err))
         } else {
             customFetch(2000, products.filter(item => item.categoryId === parseInt(idCategory)))
-            .then(result => console.log(result))
+            .then(result => setDatos(result))
             .catch(err => console.log(err))
         }
-        console.log(idCategory);
+
     }, []);
 
     const onAdd = (qty) => {

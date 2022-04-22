@@ -11,7 +11,7 @@ function Items({ id, title, category, price, image }) {
                 <h4 className="card-title">{title}</h4>
                 <p className="card-text">{category}</p>
                 <h5 className="card-subtitle">{price}</h5>
-                <Link to='/item/:idItem'style={{textDecoration: "none"}}><button>Ver detalles</button></Link>
+                <Link to={'/item/' + id} style={{textDecoration: "none"}}><button>Ver detalles</button></Link>
             </div>
         </div>
     )
