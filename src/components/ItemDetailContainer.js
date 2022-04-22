@@ -7,17 +7,20 @@ const { products } = require("../utils/products");
 
 
 const ItemDetailContainer = () => {
-    const[datos, setDatos] = useState({});
-    console.log("products: " + products)
+    const[datos, setDatos] = useState([]);
+    console.log(products)
 
     const { idItem } = useParams();
 
+    console.log(idItem);
+
 
     useEffect (() => {
-        customFetch (2000, products.find(item => item.id === parseInt(idItem)))
+        customFetch (2000, products.filter(item => item.id === parseInt(idItem)))
             .then(result => setDatos(result))
             .catch(error => console.log (error))
-    }, [datos]);
+    }, []);
+    
     
     return (
             <ItemDetail item ={datos}/>
