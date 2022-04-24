@@ -12,7 +12,7 @@ const ItemDetail = ({ item }) => {
     const onAdd = (qty) => {
         alert("Seleccionaste " + qty + "imagenes" );
         setItemCount(qty);
-        test.addItem(item);
+        test.addItem(item, qty);
 
     }
 
@@ -35,7 +35,7 @@ const ItemDetail = ({ item }) => {
                     <>
                     {
                         itemCount === 0
-                        ? <ItemCount stock={item.stock} initial={0} onAdd={onAdd} />
+                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
                         : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Comprar</Button></Link>
                     }
                     </>

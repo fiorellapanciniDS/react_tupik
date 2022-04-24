@@ -4,9 +4,10 @@ import { useContext, useEffect, useState } from 'react';
 import { ProductAmount, ProductAmountContainer } from './styledComponents';
 import { CartContext } from './CartContext';
 
-const ItemCount = ({ stock = 5, initial = 1,  onAdd }) => {
+
+const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
     const [count, setCount] = useState(0);
-    const Count = useContext(CartContext);
+
 
     useEffect(() => {
         setCount(initial);
@@ -19,7 +20,7 @@ const ItemCount = ({ stock = 5, initial = 1,  onAdd }) => {
     }
     
     const decrement = () => {
-        if (count > initial) {
+        if (count > initial+1) {
             setCount(count - 1);
         }
     }
@@ -29,7 +30,7 @@ const ItemCount = ({ stock = 5, initial = 1,  onAdd }) => {
             <ProductAmount>{count}</ProductAmount>
             <Button variant="text" onClick={decrement}><Remove /></Button>
             {
-                stock
+                stock && count
                 ? <Button variant="contained" color="secondary" onClick={() => onAdd(count)}>Agregar</Button>
                 : <Button variant="contained" disabled>Agregar</Button>
             }

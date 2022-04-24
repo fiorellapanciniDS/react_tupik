@@ -82,5 +82,39 @@ const TopText = styled.span`
   margin: 0px 10px;
 `;
 
+const Bottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-export { ProductAmount, ProductAmountContainer, ProductPrice, ProductDetail, PriceDetail, Details, ImageCart, Product, ContentCart, TitleCart, WrapperCart, Top, TopButton, TopText }
+const Info = styled.div`
+  flex: 3;
+`;
+
+
+const Summary = styled.div`
+  flex: 1;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+  height: 50vh;
+`;
+
+const SummaryTitle = styled.h1`
+  font-weight: 200;
+`;
+
+const SummaryItem = styled.div`
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
+`;
+
+const SummaryItemText = styled.span``;
+
+const SummaryItemPrice = styled.span``;
+
+
+export { ProductAmount, ProductAmountContainer, ProductPrice, ProductDetail, PriceDetail, Details, ImageCart, Product, ContentCart, TitleCart, WrapperCart, Top, TopButton, TopText, Summary, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Info, Bottom }
