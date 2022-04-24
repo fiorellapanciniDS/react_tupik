@@ -1,14 +1,18 @@
 import { Button } from '@mui/material';
 import ItemCount from "./ItemCount";
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from './CartContext';
 
 
 const ItemDetail = ({ item }) => {
+    const [itemCount, setItemCount] = useState(0);
+    const test = useContext(CartContext);
    
-
     const onAdd = (qty) => {
         alert("Seleccionaste " + qty + "imagenes" );
+        setItemCount(qty);
+        test.addItem(item);
 
     }
 
@@ -29,8 +33,11 @@ const ItemDetail = ({ item }) => {
                 </div> 
                 <div className="col-lg-7 col-md-7 col-xs-12 detailImg">   
                     <>
-                    <ItemCount stock={item.stock} initial={0} onAdd={onAdd} />
-                    <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Comprar</Button></Link>
+                    {
+                        itemCount === 0
+                        ? <ItemCount stock={item.stock} initial={0} onAdd={onAdd} />
+                        : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Comprar</Button></Link>
+                    }
                     </>
                 </div>
             </div>

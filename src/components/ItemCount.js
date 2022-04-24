@@ -1,10 +1,12 @@
 import { Button } from '@mui/material';
 import { Add, Remove } from '@mui/icons-material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductAmount, ProductAmountContainer } from './styledComponents';
+import { CartContext } from './CartContext';
 
 const ItemCount = ({ stock = 5, initial = 1,  onAdd }) => {
     const [count, setCount] = useState(0);
+    const Count = useContext(CartContext);
 
     useEffect(() => {
         setCount(initial);
