@@ -4,9 +4,42 @@ import { CartContext } from './CartContext';
 import { Link } from 'react-router-dom';
 import { WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart, Details, PriceDetail, ProductAmountContainer, ProductAmount, ProductPrice, Top, TopText, Bottom, Info, Summary, SummaryTitle, SummaryItemPrice, SummaryItem, SummaryItemText } from './styledComponents';
 import FormatNumber from '../utils/FormatNumber';
+import { collection, doc, serverTimestamp, setDoc } from '@firebase/firestore';
+import db from '../utils/firebaseConfig';
 
 const Cart = () => {
     const test = useContext(CartContext);
+
+    const checkout = () => {
+        let order = {
+            buyer:{
+                name: "Fio Pancini",
+                email: "fio@pancini.com",
+                phone: "12345678"
+            },
+            date: serverTimestamp(),
+            items: test.cartList.map(item => ({
+                id: item.idItem,
+                title: item.nameItem,
+                price: item.costItem,
+                qty: item.qtyItem,
+            })),
+            total: test.calcTotal(),
+        };
+        const createOrderInFirestore = async () => {
+            const newOrderRef = doc(collection(db, "orders"));
+            await setDoc(newOrderRef, order);
+            return newOrderRef;
+          }
+    
+        createOrderInFirestore()
+        .then(result => alert ("Tu orden fue creada"))
+        .catch(err => console.log(err));
+      
+        test.clear();
+    };
+
+
 
     return (
         <WrapperCart>
@@ -67,7 +100,7 @@ const Cart = () => {
                                 <SummaryItemText>Total</SummaryItemText>
                                 <SummaryItemPrice><FormatNumber number={test.calcTotal()} /></SummaryItemPrice>
                             </SummaryItem>
-                            <Button variant="contained" color="secondary">Finalizar Compra</Button>
+                            <Button variant="contained" color="secondary" onClick={checkout}>Finalizar Compra</Button>
                         </Summary>
                 }
             </Bottom>

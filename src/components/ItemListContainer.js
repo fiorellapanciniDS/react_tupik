@@ -2,23 +2,25 @@ import ItemList from './ItemList';
 import customFetch from "../utils/customFetch";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-const { products } = require('../utils/products');
+import { firestoreFetch } from '../utils/firestoreFetch';
+
 
 const ItemListContainer = () => {
     const [datos, setDatos] = useState([]);
     const { idCategory } = useParams();
 
+    //componentDidUpdate
     useEffect(() => {
-        if (idCategory == undefined) {
-        customFetch(2000, products)
+        firestoreFetch(idCategory)
             .then(result => setDatos(result))
-            .catch(err => console.log(err))
-        } else {
-            customFetch(2000, products.filter(item => item.categoryId === parseInt(idCategory)))
-            .then(result => setDatos(result))
-            .catch(err => console.log(err))
-        }
+            .catch(err => console.log(err));
+    }, [idCategory]);
 
+    //componentWillUnmount
+    useEffect(() => {
+        return (() => {
+            setDatos([]);
+        })
     }, []);
 
     const onAdd = (qty) => {
