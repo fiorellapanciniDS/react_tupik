@@ -18,13 +18,13 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link to='/category/1' style={{textDecoration: "none", color: "white"}}>Paisajes</Link>
+                            <Link to='/category/paisajes' style={{textDecoration: "none", color: "white"}}>Paisajes</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to='/category/2' style={{textDecoration: "none", color: "white"}}>Playas</Link>
+                            <Link to='/category/playas' style={{textDecoration: "none", color: "white"}}>Playas</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to='/category/3' style={{textDecoration: "none", color: "white"}}>Noche</Link>
+                            <Link to='/category/noche' style={{textDecoration: "none", color: "white"}}>Noche</Link>
                         </li>
                         </ul>
                     </div>
