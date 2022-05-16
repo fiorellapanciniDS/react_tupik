@@ -26,7 +26,7 @@ Por el momento la idea es realizarlo con imagenes divididas en categorias (natur
 
 ## Demo
 
-![image] (https://github.com/fiorellapanciniDS/react_tupik/blob/master/src/components/tupik.gif)
+https://github.com/fiorellapanciniDS/react_tupik/blob/master/src/components/tupik.gif
 
 
 ## 🚀 Sobre mi
