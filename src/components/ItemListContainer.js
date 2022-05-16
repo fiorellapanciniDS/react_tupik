@@ -1,37 +1,35 @@
-import ItemList from './ItemList';
-import customFetch from "../utils/customFetch";
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { firestoreFetch } from '../utils/firestoreFetch';
-
+import ItemList from "./ItemList";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { firestoreFetch } from "../utils/firestoreFetch";
 
 const ItemListContainer = () => {
-    const [datos, setDatos] = useState([]);
-    const { idCategory } = useParams();
+   const [datos, setDatos] = useState([]);
+   const { idCategory } = useParams();
 
-    //componentDidUpdate
-    useEffect(() => {
-        firestoreFetch(idCategory)
-            .then(result => setDatos(result))
-            .catch(err => console.log(err));
-    }, [idCategory]);
+   useEffect(() => {
+      firestoreFetch(idCategory)
+         .then((result) => setDatos(result))
+         .catch((err) => console.log(err));
+   }, [idCategory]);
 
-    //componentWillUnmount
-    useEffect(() => {
-        return (() => {
-            setDatos([]);
-        })
-    }, []);
+   useEffect(() => {
+      return () => {
+         setDatos([]);
+      };
+   }, []);
 
-    const onAdd = (qty) => {
-        alert("Seleccionaste " + qty + " imagenes.");
-    }
+   const onAdd = (qty) => {
+      alert("Seleccionaste " + qty + " imagenes.");
+   };
 
-    return (
-        <>  
+   return (
+      <>
+         <div className="row detailContainer">
             <ItemList items={datos} />
-        </>
-    );
-}
+         </div>
+      </>
+   );
+};
 
 export default ItemListContainer;

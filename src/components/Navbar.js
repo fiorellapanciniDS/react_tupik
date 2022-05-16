@@ -21,17 +21,17 @@ const Navbar = () => {
                             <Link to='/category/paisajes' style={{textDecoration: "none", color: "white"}}>Paisajes</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to='/category/playas' style={{textDecoration: "none", color: "white"}}>Playas</Link>
+                            <Link to='/category/naturaleza' style={{textDecoration: "none", color: "white"}}>Naturaleza</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to='/category/noche' style={{textDecoration: "none", color: "white"}}>Noche</Link>
+                            <Link to='/category/patterns' style={{textDecoration: "none", color: "white"}}>Patterns</Link>
                         </li>
                         </ul>
                     </div>
                     </div>
                 </nav>
                 <CartWidget />
-                </Stack>
+            </Stack>
             </header>
         </div>
     );

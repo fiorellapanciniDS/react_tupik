@@ -1,77 +1,82 @@
 import { createContext, useState } from "react";
 
-
 export const CartContext = createContext();
 
-const CartContextProvider = ({children}) => {
-    const [cartList, setCartList] = useState([]);//no siempre es un array vacio, puede ser uno hardcodeado
-    
-    const addItem = (item, qty) => {
-        let found = cartList.find(product => product.idItem === item.id);
-        if (found === undefined) {
-            setCartList([
-                ...cartList,
-                {
-                    idItem: item.id,
-                    imgItem: item.image,
-                    nameItem: item.name,
-                    costItem: item.cost,
-                    qtyItem: qty
-                }
-            ]);
-        } else {
-            found.qtyItem += qty;
-        }
-    }
+const CartContextProvider = ({ children }) => {
+   const [cartList, setCartList] = useState([]); //no siempre es un array vacio, puede ser uno hardcodeado
 
-    const removeItem = (id) => {
-        const result = cartList.filter(item => item.idItem != id);
-        setCartList(result);
-    }
+   const addItem = (item, qty) => {
+      let found = cartList.find((product) => product.idItem === item.id);
+      if (found === undefined) {
+         setCartList([
+            ...cartList,
+            {
+               idItem: item.id,
+               imgItem: item.image,
+               nameItem: item.name,
+               costItem: item.cost,
+               qtyItem: qty,
+            },
+         ]);
+      } else {
+         found.qtyItem += qty;
+      }
+   };
 
-    const clear = () => {
-        setCartList([]);
-    }
+   const removeItem = (id) => {
+      const result = cartList.filter((item) => item.idItem != id);
+      setCartList(result);
+   };
 
-    const calcTotalPerItem = (idItem) => {
-        let index = cartList.map(item => item.idItem).indexOf(idItem);
-        return cartList[index].costItem * cartList[index].qtyItem;
-    }
+   const clear = () => {
+      setCartList([]);
+   };
 
-    const calcSubTotal = () => {
-        let totalPerItem = cartList.map(item => calcTotalPerItem(item.idItem));
-        return totalPerItem.reduce((previousValue, currentValue) => previousValue + currentValue);
-    }
+   const calcTotalPerItem = (idItem) => {
+      let index = cartList.map((item) => item.idItem).indexOf(idItem);
+      return cartList[index].costItem * cartList[index].qtyItem;
+   };
 
-    const calcTaxes = () => {
-        return calcSubTotal() * 0.22;
-    }
+   const calcSubTotal = () => {
+      let totalPerItem = cartList.map((item) => calcTotalPerItem(item.idItem));
+      return totalPerItem.reduce(
+         (previousValue, currentValue) => previousValue + currentValue
+      );
+   };
 
-    const calcTotal = () => {
-        return calcSubTotal();
-    }
+   const calcTaxes = () => {
+      return calcSubTotal() * 0.22;
+   };
 
-    const calcItemsQty = () => {
-        let qtys = cartList.map(item => item.qtyItem);
-        return qtys.reduce(((previousValue, currentValue) => previousValue + currentValue), 0);
-    }
+   const calcTotal = () => {
+      return calcSubTotal();
+   };
 
+   const calcItemsQty = () => {
+      let qtys = cartList.map((item) => item.qtyItem);
+      return qtys.reduce(
+         (previousValue, currentValue) => previousValue + currentValue,
+         0
+      );
+   };
 
-    return (
-    <CartContext.Provider value={{
-        cartList, 
-        addItem,
-        clear,
-        removeItem,
-        calcTotalPerItem,
-        calcSubTotal,
-        calcTaxes,
-        calcTotal,
-        calcItemsQty,
-        }}>
-        {children}
-    </CartContext.Provider>
-    );
-}
+   return (
+      <CartContext.Provider
+         value={{
+            cartList,
+            addItem,
+            clear,
+            removeItem,
+            calcTotalPerItem,
+            calcSubTotal,
+            calcTaxes,
+            calcTotal,
+            calcItemsQty,
+         }}
+      >
+         {children}
+      </CartContext.Provider>
+   );
+};
 
 export default CartContextProvider;
